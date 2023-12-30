@@ -1,2 +1,5 @@
-
-/dentalcare/__pycache__
+.vscode/
+*.pyc
+*.sqlite3
+__pycache__
+media

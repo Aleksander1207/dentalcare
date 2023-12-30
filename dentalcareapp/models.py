@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 
 class Dentist(models.Model):
@@ -6,6 +7,7 @@ class Dentist(models.Model):
     last_name = models.CharField(max_length=20)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
+    password = forms.CharField(max_length=32, widget=forms.PasswordInput)
     years_of_experience = models.IntegerField()
     practice_location = models.CharField(max_length=50)
     image = models.ImageField(upload_to='dentalcareapp/files/images/dentists', null=True, blank=True)
@@ -17,10 +19,10 @@ class Dentist(models.Model):
 class Patient(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    age = models.IntegerField()
     date_of_birth = models.DateField()
     email = models.EmailField()
     phone = models.CharField(max_length=20)
+    password = forms.CharField(max_length=32, widget=forms.PasswordInput)
     address = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=50)
     dentist = models.ForeignKey(Dentist, on_delete=models.SET_NULL, null=True, blank=True)
